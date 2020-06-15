@@ -28,4 +28,33 @@ router.post('/professor', (req,res) =>{
         })
 })
 
+router.get('/professor', (req,res) =>{
+    ProfDetail.findOne({
+        email: req.query.email
+    })
+    .then(doc =>{
+        res.json(doc)
+    })
+})
+
+router.put('/professor', (req,res) =>{
+    ProfDetail.findOneAndUpdate({
+        email: req.query.email
+    },req.body,{
+        new:true
+    })
+    .then(doc =>{
+        res.json(doc)
+    })
+})
+
+router.delete('/professor', (req,res) =>{
+    ProfDetail.findOneAndRemove({
+        email: req.query.email
+    })
+    .then(doc =>{
+        res.json(doc)
+    })
+})
+
 module.exports = router
