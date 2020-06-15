@@ -1,14 +1,19 @@
 let express = require("express")
 let path =require('path')
+
+let bodyParser = require('body-parser')
+
 let app =express()
 
 
 let studentRoute = require('./routes/student')
+let profRoute = require('./routes/prof')
 
+app.use(bodyParser.json())
 
 app.use((req,res,nextFunc)=>{
-    console.log("For proper sequence stuff, ...")
     console.log(`Hey the requested URl is ${req.originalUrl} and the time and date are  ${new Date().toString()}`)
+    console.log(req.body)
 
     nextFunc()
 
@@ -16,6 +21,7 @@ app.use((req,res,nextFunc)=>{
 
 
 app.use(studentRoute)
+app.use(profRoute)
 app.use(express.static('public'))
 
 

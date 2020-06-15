@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Saad2714/Task1-RestAPI#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.18"
   },
